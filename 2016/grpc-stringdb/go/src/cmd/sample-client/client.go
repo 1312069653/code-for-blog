@@ -1,3 +1,4 @@
+// https://github.com/grpc/grpc/issues/15675
 // Basic client to contact the gRPC server.
 package main
 
@@ -31,12 +32,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, err = c.SetValue(ctx, &pb.SetValueRequest{Key: "baz", Value: "anaconda"})
-	if err != nil {
-		log.Fatal(err)
-	}
 
-	reply, err := c.GetValue(ctx, &pb.GetValueRequest{Key: "baz"})
+	reply, err := c.GetValue(ctx, &pb.GetValueRequest{Key: "foo"})
 	if err != nil {
 		log.Fatal(err)
 	}
